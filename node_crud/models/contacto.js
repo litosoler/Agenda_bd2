@@ -1,4 +1,5 @@
-let mongoose = require('mongoose');
+
+let mongoose = require('./../config/conexion');
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
@@ -8,6 +9,6 @@ let schema = new Schema({
     edad: { type: Number, min: 0 }
 }, { versionKey: false });
 
-let Contacto = mongoose.model('Contactos', schema);
+let Contacto = mongoose.model('contactos', schema);
 
 module.exports = Contacto;

@@ -1,13 +1,13 @@
 let express = require('express');
 let router = express.Router();
-
-let mongoose = require('./../config/conexion');
 let Contacto = require('./../models/contacto');
 
 router.get('/', (req, res, next) => {
-  res.render('index', { personas: [
-    { nombres: 'Julio', apellidos: 'Sandoval', edad: 95}
-  ] });
+  res.render('index', { 
+      personas: [
+        { nombres: 'Julio', apellidos: 'Sandoval', edad: 95}
+      ],  
+  });
 
   // Contacto.find((err, personas) => {
   //   console.log(personas);
@@ -22,12 +22,11 @@ router.get('/contacto/nuevo', (req, res, next) => {
 });
 
 router.get('/contacto/editar/:id', (req, res, next) => {
-  //let idPersona = req.params.id;  
-  // Contacto.findOne({_id: idPersona }, (err, persona) => {
-  //   console.log(persona);
-  //   if (err) throw err;
-  //   res.send('personaForm', { persona: persona });
-  // });
+  let idPersona = req.params.id;  
+  Contacto.findOne({_id: idPersona }, (err, persona) => {
+    if (err) throw err;
+    res.send('personaForm', { persona: persona });
+  });
 });
 
 router.get('/contacto/eliminar/:id', (req, res, next) => {
@@ -42,11 +41,10 @@ router.get('/contacto/eliminar/:id', (req, res, next) => {
 router.post('/contacto/crear', (req, res, next) => {
   if (req.body._id === "") {
     let per = new Contacto({
-      nombres: req.body.nombres,
-      apellidos: req.body.apellidos,
+      nombres: req.body.nombre,
+      apellidos: req.body.apellido,
       edad: req.body.edad
     });
-    
     per.save();
   } else {    
     Contacto.findByIdAndUpdate(req.body._id, { $set: req.body }, { new: true }, (err, model) => {
