@@ -3,7 +3,44 @@ let mongoose = require('./../config/conexion');
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
-    id: { type: String },
+    id: String,
+    apellidos: String,
+    identidad: String,
+    rtn:  String ,
+    direcciones: [
+        {
+            id: String,
+            descripcion: String,
+            tipo: String
+        }
+    ],
+    telefonos: [
+        {
+            numero: String,
+            direccione: String, 
+        }
+    ],
+    tipo: String,
+    fechas: [
+        {
+            fecha: String,
+            descripcion: String
+        }
+    ],
+    contactosAsociados: [],
+    tipoUsuario: String 
+}, { versionKey: false });
+
+let Contacto = mongoose.model('contactos', schema);
+
+module.exports = Contacto;
+
+
+
+
+// las dejo aqui por si se requiere o por si jos equivocamos
+/*
+id: { type: String },
     apellidos: { type: String },
     identidad: { type: String },
     rtn: { type: String },
@@ -28,9 +65,5 @@ let schema = new Schema({
         }
     ],
     contactosAsociados: [],
-    tipoUsuario: { type: String} 
-}, { versionKey: false });
-
-let Contacto = mongoose.model('contactos', schema);
-
-module.exports = Contacto;
+    tipoUsuario: { type: String}
+    */
