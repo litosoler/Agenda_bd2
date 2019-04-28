@@ -16,8 +16,8 @@
             <td>{{this.nombres}}</td> 
             <td>{{this.apellidos}}</td>
             <td>{{this.edad}}</td>
-            <td><a href="/persona/modificar/{{this._id}}">Modificar</a></td> 
-            <td><a href="/persona/eliminar/{{this._id}}">Eliminar</a></td> 
+            <td><a class="btn btn-warning" href="/persona/modificar/{{this._id}}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a class="btn btn-danger" href="/persona/eliminar/{{this._id}}"><span class="glyphicon glyphicon-trash"></span></a></td> 
           </tr>          
        {{/each}}   
       </table>
