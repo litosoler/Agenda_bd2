@@ -7,7 +7,6 @@ let schema = new Schema({
     apellidos: { type: String },
     identidad: { type: String },
     rtn: { type: String },
-    edad: { type: String},
     direcciones: [
         {
             id: { type: String},
