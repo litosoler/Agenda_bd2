@@ -5,11 +5,15 @@ let mongoose = require('./../config/conexion');
 let Contacto = require('./../models/contacto');
 
 router.get('/', (req, res, next) => {
+  res.render('index', { personas: [
+    { nombres: 'Julio', apellidos: 'Sandoval', edad: 95}
+  ] });
+
   // Contacto.find((err, personas) => {
   //   console.log(personas);
   //   if (err) throw err;
-  //   res.send(personas);
-  //   //res.render('index', { personas: personas });
+  //   // res.send(personas);
+  //   res.render('index', { personas: personas });
   // });
 });
 
@@ -35,25 +39,23 @@ router.get('/contacto/eliminar/:id', (req, res, next) => {
   // });
 });
 
-// router.post('/contacto/crear', (req, res, next) => {
-//   // console.log(req.body);  
-
-//   // if (req.body._id === "") {
-//   //   let per = new Persona({
-//   //     nombres: req.body.nombres,
-//   //     apellidos: req.body.apellidos,
-//   //     edad: req.body.edad
-//   //   });
+router.post('/contacto/crear', (req, res, next) => {
+  if (req.body._id === "") {
+    let per = new Contacto({
+      nombres: req.body.nombres,
+      apellidos: req.body.apellidos,
+      edad: req.body.edad
+    });
     
-//   //   per.save();
-//   // } else {    
-//   //   console.log(req.body._id);
-//   //   Persona.findByIdAndUpdate(req.body._id, { $set: req.body }, { new: true }, (err, model) => {
-//   //     if (err) throw err;
-//   //   });
-//   // }
-//   // res.redirect('/');
-// });
+    per.save();
+  } else {    
+    Contacto.findByIdAndUpdate(req.body._id, { $set: req.body }, { new: true }, (err, model) => {
+      if (err) throw err;
+    });
+  }
+  res.send(req.body);
+  // res.redirect('/');
+});
 
 
 module.exports = router;
