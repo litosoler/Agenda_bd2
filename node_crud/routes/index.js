@@ -17,7 +17,11 @@ router.get('/', (req, res, next) => {
     res.render('index', { contactos});
   });
 });
-
+/*
+router.get('/nav', (req, res, next) => {
+  res.render('index');
+});
+*/
 router.get('/contacto/nuevo', (req, res, next) => {
   res.render('form', {});
 });
