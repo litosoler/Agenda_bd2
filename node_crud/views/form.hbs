@@ -1,0 +1,97 @@
+<div class="container pt-5">
+    <div class="jumbotron p-5">
+        <form method="POST" action="/contacto/crear">
+            <div class="form-group row" style="display:none">
+                <input type="text" class="form-control" id="_id" name="_id" value="{{contacto._id}}">
+                <div id="data" data-json="{{json}}"></div>
+            </div>
+            <div class="form-group row">
+                <label for="tipoPersona" class="col-sm-2 col-form-label">Tipo de
+                    Persona:
+                </label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="tipoPersona" name="tipoPersona" required>
+                        <option value=""></option>
+                        <option value="fisica" >Fisica</option>
+                        <option value="juridica">Juridica</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="tipoUsuario" class="col-sm-2 col-form-label">Tipo de usuario:</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="tipoUsuario" name="tipoUsuario" selected="compania" required>
+                        <option value=""></option>
+                        <option value="compania" >Compañia</option>
+                        <option value="particular">Particular</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="nombres" class="col-sm-2 col-form-label">Nombre:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nombres" name="nombres" value="{{contacto.nombres}}" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="apellidos" class="col-sm-2 col-form-label col-form-label-sm">Apellido:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="apellidos" name="apellidos" value= "{{contacto.apellidos}}" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="identidad" class="col-sm-2 col-form-label">Identidad: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="identidad" name="identidad" value="{{contacto.identidad}}" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="rtn" class="col-sm-2 col-form-label">RTN: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="rtn" name="rtn" value="{{contacto.rtn}}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="direcciones" class="col-sm-2 col-form-label col-form-label-sm">Direccion:</label>
+                <div class="col-sm-10">
+                    <textarea rows="3" class="form-control" id="direcciones" name="direcciones"
+                        placeholder='Escriba las direcciones en formato JSON, Ejemplo: {"id":1, "descripcion": "texto"},{"id":2, "descripcion": "texto"}'></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="correos" class="col-sm-2 col-form-label col-form-label-sm">Correo:
+                </label>
+                <div class="col-sm-10">
+                    <textarea rows="3" class="form-control" id="correos" name="correos"
+                        placeholder="Escriba los correos separados por comas, Ejemplo: correo1, correo2"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="telefonos" class="col-sm-2 col-form-label">Telefono:</label>
+                <div class="col-sm-10">
+                    <textarea rows="3" class="form-control" id="telefonos" name="telefonos"
+                        placeholder='Escriba los Telefonos en formato JSON, Ejemplo: {"numero":"96655997", "direccion":1 }'></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="fechas" class="col-sm-2 col-form-label">Fechas:</label>
+                <div class="col-sm-10">
+                    <textarea rows="3" class="form-control" id="fechas" name="fechas"
+                        placeholder='Escriba las fechas en formato JSON, Ejemplo: {"fecha":"96655997", "descripcion":1 }'></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="contactosAsociados" class="col-sm-2 col-form-label col-form-label-sm">Contacto
+                    asociado:</label>
+                <div class="col-sm-10">
+                    <textarea row="3" class="form-control" id="contactosAsociados" name="contactosAsociados"
+                        placeholder="Escriba los correos separados por comas, Ejemplo: id1, id2"></textarea>
+                </div>
+            </div>
+            <div class="mt-5">
+                <button type="submit" class="btn btn-primary  mt-4">Aceptar</button>
+                <a href="/" class="btn btn-danger  mt-4">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>

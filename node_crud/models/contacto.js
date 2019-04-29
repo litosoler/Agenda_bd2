@@ -3,10 +3,16 @@ let mongoose = require('./../config/conexion');
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
-    id: { type: String },
-    nombres: { type: String },
-    apellidos: { type: String },
-    edad: { type: Number, min: 0 }
+    nombres: String,
+    apellidos: String,
+    identidad: String,
+    rtn: String,
+    tipoPersona: String,
+    tipoUsuario: String,
+    direcciones: [{id: Number, descripcion: String}],
+    telefonos: [{numero: Number, direccion: String}],
+    fechas: [{fecha:String, descripcion: String}],
+    contactosAsociados: [String] 
 }, { versionKey: false });
 
 let Contacto = mongoose.model('contactos', schema);
